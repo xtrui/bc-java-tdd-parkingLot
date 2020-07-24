@@ -73,4 +73,15 @@ class ParkingBoyFacts {
         //then
         assertNull(car2);
     }
+
+    @Test
+    void should_return_null_when_park_parkinglot_is_full() {
+        //given
+        ParkingBoy parkingBoy = new ParkingBoy();
+        Car car = new Car(1, "car1");
+        //when
+        Ticket ticket = parkingBoy.park(car);
+        //then
+        assertNull(ticket);
+    }
 }

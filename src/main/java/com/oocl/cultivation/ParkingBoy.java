@@ -1,19 +1,30 @@
 package com.oocl.cultivation;
 
 public class ParkingBoy {
-    Parkinglot parkinglot;
+    ParkingLot parkinglot;
 
     public ParkingBoy() {
-        this.parkinglot = new Parkinglot();
+        this.parkinglot = new ParkingLot();
+    }
+
+    public ParkingLot getParkinglot() {
+        return parkinglot;
+    }
+
+    public void setParkinglot(ParkingLot parkinglot) {
+        this.parkinglot = parkinglot;
     }
 
     public Ticket park(Car car) {
+
         parkinglot.getCars().add(car);
         return new Ticket(car.getId());
     }
 
     public Car fetch(Ticket ticket) {
-        return parkinglot.getCars().stream().filter(car -> car.getId()==ticket.getId()).findAny().orElse(null);
+        Car car2 = ticket.isStatus()?parkinglot.getCars().stream().filter(car -> car.getId()==ticket.getId()).findAny().orElse(null):null;
+        ticket.setStatus(false);
+        return car2;
     }
 
 }
