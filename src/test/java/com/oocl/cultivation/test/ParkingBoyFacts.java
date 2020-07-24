@@ -19,4 +19,16 @@ class ParkingBoyFacts {
         //then
         assertNotNull(ticket);
     }
+
+    @Test
+    void should_return_car_when_fetch_given_ticket() {
+        //given
+        Car car = new Car();
+        ParkingBoy parkingBoy = new ParkingBoy();
+        Ticket ticket = parkingBoy.park(car);
+        //when
+        Car myCar = parkingBoy.fetch(ticket);
+        //then
+        assertEquals(car,myCar);
+    }
 }
