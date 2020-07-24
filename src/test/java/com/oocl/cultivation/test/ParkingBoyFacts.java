@@ -5,6 +5,9 @@ import com.oocl.cultivation.ParkingBoy;
 import com.oocl.cultivation.Ticket;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ParkingBoyFacts {
@@ -15,21 +18,12 @@ class ParkingBoyFacts {
         ParkingBoy parkingBoy = new ParkingBoy();
         //when
         Ticket ticket = parkingBoy.park(car);
+        Car car1 = parkingBoy.fetch(ticket);
         //then
         assertNotNull(ticket);
+        assertNotNull(car1);
     }
 
-    @Test
-    void should_return_car_when_fetch_given_ticket() {
-        //given
-//        Car car = new Car();
-        ParkingBoy parkingBoy = new ParkingBoy();
-        Ticket ticket = new Ticket(1);
-        //when
-        Car car = parkingBoy.fetch(ticket);
-        //then
-        assertNotNull(car);
-    }
 
     @Test
     void should_return_ringt_car_when_park_given_ticket() {
@@ -78,7 +72,12 @@ class ParkingBoyFacts {
     void should_return_null_when_park_parkinglot_is_full() {
         //given
         ParkingBoy parkingBoy = new ParkingBoy();
-        Car car = new Car(1, "car1");
+        List<Car> cars = new ArrayList<>();
+        Car car = new Car(11, "cars");
+        for(int i =1;i<=10;i++){
+            cars.add(new Car(i,"car"+i));
+        }
+        parkingBoy.getParkinglot().setCars(cars);
         //when
         Ticket ticket = parkingBoy.park(car);
         //then

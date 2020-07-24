@@ -4,18 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ParkingLot {
-    List<Car> cars;
+    private List<Car> cars;
 
-    public ParkingLot() {
-        this.cars = new ArrayList<Car>(10);
+    ParkingLot() {
+        this.cars = new ArrayList<>(10);
     }
 
-    public List<Car> getCars() {
+    List<Car> getCars() {
         return cars;
     }
-    public boolean isFull(){
-//        return cars.size()>=10;
-        return true;
+    boolean isFull(){
+        return cars.size()>=10;
     }
 
     public void setCars(List<Car> cars) {
