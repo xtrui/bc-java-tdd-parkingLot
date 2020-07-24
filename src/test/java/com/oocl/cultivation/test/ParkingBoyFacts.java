@@ -5,8 +5,7 @@ import com.oocl.cultivation.ParkingBoy;
 import com.oocl.cultivation.Ticket;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 class ParkingBoyFacts {
     @Test
@@ -47,5 +46,18 @@ class ParkingBoyFacts {
         assertNotNull(ticket2);
         assertEquals(car, parkingBoy.fetch(ticket));
         assertEquals(car2, parkingBoy.fetch(ticket2));
+    }
+
+    @Test
+    void should_return_null_when_fecth_given_null_or_wrong_ticket() {
+        //given
+        ParkingBoy parkingBoy = new ParkingBoy();
+        //when
+        Ticket ticket = new Ticket();
+        Car car = parkingBoy.fetch(null);
+        Car car2 = parkingBoy.fetch(ticket);
+        //then
+        assertNull(car);
+        assertNull(car2);
     }
 }

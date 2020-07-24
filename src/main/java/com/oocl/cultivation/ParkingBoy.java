@@ -13,7 +13,7 @@ public class ParkingBoy {
     }
 
     public Car fetch(Ticket ticket) {
-        return parkinglot.getCars().stream().filter(car -> car.getId()==ticket.getId()).findAny().get();
+        return parkinglot.getCars().stream().filter(car -> car.getId()==ticket.getId()).findAny().orElse(null);
     }
 
 }

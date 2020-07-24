@@ -7,6 +7,10 @@ public class Ticket {
         this.id = id;
     }
 
+    public Ticket() {
+
+    }
+
     public int getId() {
         return id;
     }
