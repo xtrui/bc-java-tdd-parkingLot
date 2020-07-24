@@ -25,7 +25,7 @@ class ParkingBoyFacts {
         //given
 //        Car car = new Car();
         ParkingBoy parkingBoy = new ParkingBoy();
-        Ticket ticket = new Ticket();
+        Ticket ticket = new Ticket(1);
         //when
         Car car = parkingBoy.fetch(ticket);
         //then
@@ -33,7 +33,7 @@ class ParkingBoyFacts {
     }
 
     @Test
-    void should_return_tickets_when_park_given_cars() {
+    void should_return_ringt_car_when_park_given_ticket() {
         //given
         ParkingBoy parkingBoy = new ParkingBoy();
         Car car = new Car(1, "car1");
