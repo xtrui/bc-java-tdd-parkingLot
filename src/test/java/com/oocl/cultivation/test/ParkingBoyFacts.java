@@ -5,8 +5,6 @@ import com.oocl.cultivation.ParkingBoy;
 import com.oocl.cultivation.Ticket;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -14,7 +12,7 @@ class ParkingBoyFacts {
     @Test
     void should_return_ticket_when_parking_given_car() {
         //given
-        Car car = new Car();
+        Car car = new Car(1, "car");
         ParkingBoy parkingBoy = new ParkingBoy();
         //when
         Ticket ticket = parkingBoy.park(car);
@@ -37,11 +35,17 @@ class ParkingBoyFacts {
     @Test
     void should_return_tickets_when_park_given_cars() {
         //given
-        List<Car> cars = null;
         ParkingBoy parkingBoy = new ParkingBoy();
+        Car car = new Car(1, "car1");
+        Car car2 = new Car(2, "car2");
         //when
-        List<Ticket> tickets = parkingBoy.park(cars);
+        Ticket ticket = parkingBoy.park(car);
+        Ticket ticket2 = parkingBoy.park(car2);
+
         //then
-        assertEquals(tickets.size(),cars.size());
+        assertNotNull(ticket);
+        assertNotNull(ticket2);
+        assertEquals(car, parkingBoy.fetch(ticket));
+        assertEquals(car2, parkingBoy.fetch(ticket2));
     }
 }
