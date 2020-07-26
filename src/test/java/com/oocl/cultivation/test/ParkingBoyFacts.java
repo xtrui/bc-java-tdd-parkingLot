@@ -77,7 +77,7 @@ class ParkingBoyFacts {
         for(int i =1;i<=10;i++){
             cars.add(new Car(i,"car"+i));
         }
-        parkingBoy.getParkinglot().setCars(cars);
+        parkingBoy.getParkingLot().setCars(cars);
         //when
         Ticket ticket = parkingBoy.park(car);
         //then
