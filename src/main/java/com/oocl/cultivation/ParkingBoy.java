@@ -1,25 +1,43 @@
 package com.oocl.cultivation;
 
 public class ParkingBoy {
-    private ParkingLot parkinglot;
+    private ParkingLot parkingLot;
+    private String errMessage;
 
     public ParkingBoy() {
-        this.parkinglot = new ParkingLot();
+        this.parkingLot = new ParkingLot();
     }
 
-    public ParkingLot getParkinglot() {
-        return parkinglot;
+    public String getErrMessage() {
+        return errMessage;
     }
 
-    public void setParkinglot(ParkingLot parkinglot) {
-        this.parkinglot = parkinglot;
+    public void setErrMessage(String errMessage) {
+        this.errMessage = errMessage;
+    }
+
+    public ParkingLot getParkingLot() {
+        return parkingLot;
+    }
+
+    public void setParkingLot(ParkingLot parkingLot) {
+        this.parkingLot = parkingLot;
     }
 
     public Ticket park(Car car) {
-        if (parkinglot.isFull()){
+        if (car == null) {
+            errMessage = "你没有给车!";
+            return null;
+
+        }
+        if (parkingLot.isFull()) {
+            errMessage = "停车场已满!";
+            return null;
+        } else if (parkingLot.getCars().contains(car)) {
+            errMessage = "这辆车已经在停车场了。";
             return null;
         }
-        parkinglot.getCars().add(car);
+        parkingLot.getCars().add(car);
         return new Ticket(car.getId());
     }
 
@@ -27,7 +45,7 @@ public class ParkingBoy {
         if (ticket==null){
             return null;
         }
-        Car car2 = ticket.isStatus()?parkinglot.getCars().stream().filter(car -> car.getId()==ticket.getId()).findAny().orElse(null):null;
+        Car car2 = ticket.isStatus() ? parkingLot.getCars().stream().filter(car -> car.getId() == ticket.getId()).findAny().orElse(null) : null;
         ticket.setStatus(false);
         return car2;
     }
