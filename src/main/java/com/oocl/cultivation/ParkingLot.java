@@ -21,11 +21,17 @@ public class ParkingLot {
 
     ParkingLot() {
         this.cars = new ArrayList<>(10);
+        this.capacity = 10;
     }
 
     public ParkingLot(int id) {
         this.id = id;
         this.cars = new ArrayList<>(10);
+        this.capacity = 10;
+    }
+
+    public int getEmptyPositionQuantity() {
+        return capacity - cars.size();
     }
 
     public void setCapacity(int capacity) {
@@ -37,7 +43,7 @@ public class ParkingLot {
     }
 
     boolean isFull() {
-        return cars.size() >= 10;
+        return cars.size() >= capacity;
     }
 
     public int getId() {

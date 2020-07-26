@@ -2,24 +2,27 @@ package com.oocl.cultivation.test;
 
 import com.oocl.cultivation.Car;
 import com.oocl.cultivation.ParkingBoy;
+import com.oocl.cultivation.ParkingLot;
 import com.oocl.cultivation.Ticket;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class ParkingBoyStory2 {
     @Test
     void should_return_appropriate_errMessage_when_park_err_and_getErrMessage() {
         // given
-        ParkingBoy parkingBoy = new ParkingBoy();
+        ParkingBoy parkingBoy = new ParkingBoy(new LinkedHashSet<>(), new ParkingLot(1, 10));
         Car car = new Car(1, "car1");
-
         // when
+
+        parkingBoy.park(car);
         Ticket ticket = parkingBoy.park(car);
-        ticket = parkingBoy.park(car);
         String errMessage = parkingBoy.getErrMessage();
         parkingBoy.park(null);
         String errMessage2 = parkingBoy.getErrMessage();
@@ -31,16 +34,17 @@ public class ParkingBoyStory2 {
         parkingBoy.park(car);
         String errMessage3 = parkingBoy.getErrMessage();
         // then
-        assertEquals(errMessage, "这辆车已经在停车场了。");
-        assertEquals(errMessage2, "你没有给车!");
-        assertEquals(errMessage3, "Not enough position.");
+        assertNull(ticket);
+        assertEquals("这辆车已经在停车场了。", errMessage);
+        assertEquals("你没有给车!", errMessage2);
+        assertEquals("Not enough position.", errMessage3);
 
     }
 
     @Test
     void should_return_appropriate_errMessage_when_fetch_given_err_ticket() {
         // given
-        ParkingBoy parkingBoy = new ParkingBoy();
+        ParkingBoy parkingBoy = new ParkingBoy(new LinkedHashSet<>(), new ParkingLot(1, 10));
         Ticket ticket = new Ticket(11);
 
         // when

@@ -1,19 +1,21 @@
 package com.oocl.cultivation;
 
+import java.util.Set;
+
 public class SmartParkingBoy extends ParkingBoy {
-    public SmartParkingBoy() {
-        super();
+    public SmartParkingBoy(Set<ParkingLot> parkingLots, ParkingLot parkingLot) {
+        super(parkingLots, parkingLot);
     }
 
     @Override
     public ParkingLot getParkingLot() {
-        int maxEmptyPosition = Integer.MIN_VALUE;
-        int emptyPosition;
+        int maxEmptyPositionQuantity = Integer.MIN_VALUE;
+        int emptyPositionQuantity;
 
         for (ParkingLot parkingLot : parkingLots) {
-            emptyPosition = parkingLot.getCars().size();
-            if (emptyPosition > maxEmptyPosition) {
-                maxEmptyPosition = emptyPosition;
+            emptyPositionQuantity = parkingLot.getEmptyPositionQuantity();
+            if (emptyPositionQuantity > maxEmptyPositionQuantity) {
+                maxEmptyPositionQuantity = emptyPositionQuantity;
                 setParkingLot(parkingLot);
             }
         }

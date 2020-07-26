@@ -1,6 +1,5 @@
 package com.oocl.cultivation;
 
-import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class ParkingBoy {
@@ -8,10 +7,12 @@ public class ParkingBoy {
     ParkingLot parkingLot;
     String errMessage;
 
-    public ParkingBoy() {
-        parkingLot = new ParkingLot();
-        parkingLots = new LinkedHashSet<>();
+    public ParkingBoy(Set<ParkingLot> parkingLots, ParkingLot parkingLot) {
+        this.parkingLots = parkingLots;
+        this.parkingLot = parkingLot;
+        parkingLots.add(parkingLot);
     }
+
 
     public String getErrMessage() {
         return errMessage;
@@ -24,6 +25,7 @@ public class ParkingBoy {
     public ParkingLot getParkingLot() {
         for (ParkingLot parkingLot : parkingLots) {
             if (!parkingLot.isFull()) {
+                this.parkingLot = parkingLot;
                 return parkingLot;
             }
         }

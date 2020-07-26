@@ -1,8 +1,10 @@
 package com.oocl.cultivation;
 
+import java.util.Set;
+
 public class SuperSmartParkingBoy extends ParkingBoy {
-    public SuperSmartParkingBoy() {
-        super();
+    public SuperSmartParkingBoy(Set<ParkingLot> parkingLots, ParkingLot parkingLot) {
+        super(parkingLots, parkingLot);
     }
 
     @Override

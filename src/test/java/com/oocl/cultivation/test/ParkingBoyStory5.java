@@ -5,13 +5,15 @@ import com.oocl.cultivation.ParkingLot;
 import com.oocl.cultivation.SuperSmartParkingBoy;
 import org.junit.jupiter.api.Test;
 
+import java.util.LinkedHashSet;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ParkingBoyStory5 {
     @Test
     void should_return_parkingLot_which_has_larger_available_position_rate_when_getParkingLot() {
         // given
-        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy();
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(new LinkedHashSet<>(), new ParkingLot(1, 10));
         ParkingLot parkingLot1 = new ParkingLot(1, 12);
         ParkingLot parkingLot2 = new ParkingLot(2, 10);
         Car car = new Car(1, "car1");
