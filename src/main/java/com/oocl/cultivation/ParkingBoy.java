@@ -4,9 +4,9 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class ParkingBoy {
-    private ParkingLot parkingLot;
-    private String errMessage;
-    private final Set<ParkingLot> parkingLots;
+    final Set<ParkingLot> parkingLots;
+    ParkingLot parkingLot;
+    String errMessage;
 
     public ParkingBoy() {
         parkingLot = new ParkingLot();

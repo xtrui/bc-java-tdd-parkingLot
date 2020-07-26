@@ -16,6 +16,8 @@ public class ParkingBoyStory4 {
         ParkingLot parkingLot2 = new ParkingLot(2);
         Car car = new Car(1, "car1");
         parkingLot1.getCars().add(car);
+        smartParkingBoy.setParkingLot(parkingLot1);
+        smartParkingBoy.setParkingLot(parkingLot2);
         // when
         ParkingLot currentParkingLot = smartParkingBoy.getParkingLot();
         // then
