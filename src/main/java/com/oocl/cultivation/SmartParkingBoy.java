@@ -7,11 +7,15 @@ public class SmartParkingBoy extends ParkingBoy {
 
     @Override
     public ParkingLot getParkingLot() {
-        int minCarQuantity = Integer.MAX_VALUE;
+        int maxEmptyPosition = Integer.MIN_VALUE;
+        int emptyPosition;
 
         for (ParkingLot parkingLot : parkingLots) {
-            minCarQuantity = Math.min(parkingLot.getCars().size(), minCarQuantity);
-            setParkingLot(parkingLot);
+            emptyPosition = parkingLot.getCars().size();
+            if (emptyPosition > maxEmptyPosition) {
+                maxEmptyPosition = emptyPosition;
+                setParkingLot(parkingLot);
+            }
         }
         return parkingLot;
     }

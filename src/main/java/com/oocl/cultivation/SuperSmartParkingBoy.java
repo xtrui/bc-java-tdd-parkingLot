@@ -7,11 +7,14 @@ public class SuperSmartParkingBoy extends ParkingBoy {
 
     @Override
     public ParkingLot getParkingLot() {
-        int minCarQuantity = Integer.MAX_VALUE;
-
+        double maxAvailablePositionRate = Double.MIN_VALUE;
+        double availablePositionRate;
         for (ParkingLot parkingLot : parkingLots) {
-            minCarQuantity = Math.min(parkingLot.getCars().size(), minCarQuantity);
-            setParkingLot(parkingLot);
+            availablePositionRate = (parkingLot.getCapacity() - parkingLot.getCars().size()) / (double) parkingLot.getCapacity();
+            if (availablePositionRate > maxAvailablePositionRate) {
+                maxAvailablePositionRate = availablePositionRate;
+                setParkingLot(parkingLot);
+            }
         }
         return parkingLot;
     }

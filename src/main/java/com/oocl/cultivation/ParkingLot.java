@@ -7,6 +7,17 @@ import java.util.Objects;
 public class ParkingLot {
     int id;
     private List<Car> cars;
+    int capacity;
+
+    public ParkingLot(int id, int capacity) {
+        this.id = id;
+        this.cars = new ArrayList<>(capacity);
+        this.capacity = capacity;
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
 
     ParkingLot() {
         this.cars = new ArrayList<>(10);
@@ -15,6 +26,10 @@ public class ParkingLot {
     public ParkingLot(int id) {
         this.id = id;
         this.cars = new ArrayList<>(10);
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
     }
 
     public List<Car> getCars() {
