@@ -1,11 +1,16 @@
 package com.oocl.cultivation;
 
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 public class ParkingBoy {
     private ParkingLot parkingLot;
     private String errMessage;
+    private Set<ParkingLot> parkingLots;
 
     public ParkingBoy() {
-        this.parkingLot = new ParkingLot();
+        parkingLot = new ParkingLot();
+        parkingLots = new LinkedHashSet<>();
     }
 
     public String getErrMessage() {
@@ -22,9 +27,11 @@ public class ParkingBoy {
 
     public void setParkingLot(ParkingLot parkingLot) {
         this.parkingLot = parkingLot;
+        parkingLots.add(parkingLot);
     }
 
     public Ticket park(Car car) {
+
         if (car == null) {
             errMessage = "你没有给车!";
             return null;
