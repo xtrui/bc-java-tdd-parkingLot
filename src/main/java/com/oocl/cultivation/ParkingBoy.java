@@ -43,10 +43,12 @@ public class ParkingBoy {
 
     public Car fetch(Ticket ticket) {
         if (ticket==null){
+            errMessage = "Unrecognized parking ticket.";
             return null;
         }
         Car car2 = ticket.isStatus() ? parkingLot.getCars().stream().filter(car -> car.getId() == ticket.getId()).findAny().orElse(null) : null;
         ticket.setStatus(false);
+        errMessage = "Unrecognized parking ticket.";
         return car2;
     }
 
