@@ -37,4 +37,22 @@ public class ParkingBoyStory2 {
 
     }
 
+    @Test
+    void should_return_appropriate_errMessage_when_fetch_given_err_ticket() {
+        // given
+        ParkingBoy parkingBoy = new ParkingBoy();
+        Ticket ticket = new Ticket(11);
+
+        // when
+        parkingBoy.fetch(ticket);
+        String errMessage = parkingBoy.getErrMessage();
+        parkingBoy.fetch(null);
+        String errMessage2 = parkingBoy.getErrMessage();
+
+        //then
+        assertEquals(errMessage, "Unrecognized parking ticket.");
+        assertEquals(errMessage2, "Unrecognized parking ticket.");
+
+    }
+
 }
