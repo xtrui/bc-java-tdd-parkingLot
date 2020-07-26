@@ -22,6 +22,11 @@ public class ParkingBoy {
     }
 
     public ParkingLot getParkingLot() {
+        for (ParkingLot parkingLot : parkingLots) {
+            if (!parkingLot.isFull()) {
+                return parkingLot;
+            }
+        }
         return parkingLot;
     }
 
@@ -44,6 +49,7 @@ public class ParkingBoy {
             errMessage = "这辆车已经在停车场了。";
             return null;
         }
+
         parkingLot.getCars().add(car);
         return new Ticket(car.getId());
     }

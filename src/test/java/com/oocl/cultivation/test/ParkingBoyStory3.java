@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class ParkingBoyStory3 {
     @Test
     void should_return_2_when_getParkingLot_given_11_cars() {
@@ -27,6 +29,6 @@ public class ParkingBoyStory3 {
         parkingBoy.park(car);
         ParkingLot currentParkingLot = parkingBoy.getParkingLot();
         // then
-
+        assertEquals(currentParkingLot, parkingLot2);
     }
 }
