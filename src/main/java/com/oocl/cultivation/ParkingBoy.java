@@ -6,7 +6,7 @@ import java.util.Set;
 public class ParkingBoy {
     private ParkingLot parkingLot;
     private String errMessage;
-    private Set<ParkingLot> parkingLots;
+    private final Set<ParkingLot> parkingLots;
 
     public ParkingBoy() {
         parkingLot = new ParkingLot();
@@ -42,7 +42,7 @@ public class ParkingBoy {
             return null;
 
         }
-        if (parkingLot.isFull()) {
+        if (isAllParkingLotFull()) {
             errMessage = "Not enough position.";
             return null;
         } else if (parkingLot.getCars().contains(car)) {
@@ -55,7 +55,7 @@ public class ParkingBoy {
     }
 
     public Car fetch(Ticket ticket) {
-        if (ticket==null){
+        if (ticket == null) {
             errMessage = "Please provide your parking ticket.";
             return null;
         }
@@ -63,6 +63,15 @@ public class ParkingBoy {
         ticket.setStatus(false);
         errMessage = "Unrecognized parking ticket.";
         return car2;
+    }
+
+    public boolean isAllParkingLotFull() {
+        for (ParkingLot parkingLot : parkingLots) {
+            if (!parkingLot.isFull()) {
+                return false;
+            }
+        }
+        return true;
     }
 
 }

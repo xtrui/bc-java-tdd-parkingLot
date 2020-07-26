@@ -17,12 +17,20 @@ public class ParkingLot {
         this.cars = new ArrayList<>(10);
     }
 
-    List<Car> getCars() {
+    public List<Car> getCars() {
         return cars;
     }
 
     boolean isFull() {
         return cars.size() >= 10;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setCars(List<Car> cars) {
