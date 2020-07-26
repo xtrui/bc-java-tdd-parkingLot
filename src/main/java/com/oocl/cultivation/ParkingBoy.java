@@ -31,7 +31,7 @@ public class ParkingBoy {
 
         }
         if (parkingLot.isFull()) {
-            errMessage = "停车场已满!";
+            errMessage = "Not enough position.";
             return null;
         } else if (parkingLot.getCars().contains(car)) {
             errMessage = "这辆车已经在停车场了。";
@@ -43,7 +43,7 @@ public class ParkingBoy {
 
     public Car fetch(Ticket ticket) {
         if (ticket==null){
-            errMessage = "Unrecognized parking ticket.";
+            errMessage = "Please provide your parking ticket.";
             return null;
         }
         Car car2 = ticket.isStatus() ? parkingLot.getCars().stream().filter(car -> car.getId() == ticket.getId()).findAny().orElse(null) : null;

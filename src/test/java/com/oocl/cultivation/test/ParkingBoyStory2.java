@@ -33,7 +33,7 @@ public class ParkingBoyStory2 {
         // then
         assertEquals(errMessage, "这辆车已经在停车场了。");
         assertEquals(errMessage2, "你没有给车!");
-        assertEquals(errMessage3, "停车场已满!");
+        assertEquals(errMessage3, "Not enough position.");
 
     }
 
@@ -51,7 +51,7 @@ public class ParkingBoyStory2 {
 
         //then
         assertEquals(errMessage, "Unrecognized parking ticket.");
-        assertEquals(errMessage2, "Unrecognized parking ticket.");
+        assertEquals(errMessage2, "Please provide your parking ticket.");
 
     }
 
