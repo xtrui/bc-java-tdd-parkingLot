@@ -2,19 +2,19 @@ package com.oocl.cultivation;
 
 public class Ticket {
     private int id;
-    private boolean status;
+    private boolean isValid;
 
     public Ticket(int id) {
         this.id = id;
-        this.status = true;
+        this.isValid = true;
     }
 
-    boolean isStatus() {
-        return status;
+    boolean isValid() {
+        return isValid;
     }
 
-    void setStatus(boolean status) {
-        this.status = status;
+    void setValid() {
+        this.isValid = false;
     }
 
     public Ticket() {
