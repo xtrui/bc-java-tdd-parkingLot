@@ -9,7 +9,7 @@ import java.util.LinkedHashSet;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class ParkingBoyStory5 {
+public class SuperSmartParkingBoyTest {
     @Test
     void should_return_parkingLot_which_has_larger_available_position_rate_when_getParkingLot() {
         // given
