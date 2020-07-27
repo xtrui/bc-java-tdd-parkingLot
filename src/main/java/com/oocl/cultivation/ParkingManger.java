@@ -17,8 +17,12 @@ public class ParkingManger extends ParkingBoy {
         return parkingBoys;
     }
 
-    public Ticket specifyParkingBoyToPark(Class<ParkingBoy> parkingBoyClass, Car car) {
-
+    public Ticket specifyParkingBoyToPark(Class<? extends ParkingBoy> parkingBoyClass, Car car) {
+        for (ParkingBoy parkingBoy : parkingBoys) {
+            if (parkingBoy.getClass() == parkingBoyClass) {
+                return parkingBoy.park(car);
+            }
+        }
         return null;
     }
 }

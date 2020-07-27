@@ -22,7 +22,7 @@ public class ParkingManagerTest {
         parkingManger.addParkingBoy(smartParkingBoy);
         parkingManger.addParkingBoy(superSmartParkingBoy);
         Car car = new Car(1, "car1");
-        Ticket ticket = parkingManger.specifyParkingBoyToPark(ParkingBoy.class, car);
+        Ticket ticket = parkingManger.specifyParkingBoyToPark(SmartParkingBoy.class, car);
         // then
         assertTrue(parkingManger.addParkingBoy(parkingBoy).contains(parkingBoy));
         assertNotNull(ticket);
