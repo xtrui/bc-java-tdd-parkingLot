@@ -75,7 +75,6 @@ class ParkingBoyTest {
     void should_return_null_when_park_parkingLot_is_full() {
         //given
         ParkingBoy parkingBoy = new ParkingBoy(new LinkedHashSet<>(), new ParkingLot(1, 1));
-        List<Car> cars = new ArrayList<>();
         Car car = new Car(1, "car1");
         Car car2 = new Car(2, "car2");
 
