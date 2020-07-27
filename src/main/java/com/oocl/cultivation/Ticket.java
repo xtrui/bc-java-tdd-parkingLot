@@ -9,11 +9,11 @@ public class Ticket {
         this.status = true;
     }
 
-    public boolean isStatus() {
+    boolean isStatus() {
         return status;
     }
 
-    public void setStatus(boolean status) {
+    void setStatus(boolean status) {
         this.status = status;
     }
 
@@ -21,7 +21,7 @@ public class Ticket {
 
     }
 
-    public int getId() {
+    int getId() {
         return id;
     }
 

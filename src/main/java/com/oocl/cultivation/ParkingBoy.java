@@ -5,7 +5,7 @@ import java.util.Set;
 public class ParkingBoy {
     final Set<ParkingLot> parkingLots;
     ParkingLot parkingLot;
-    String errMessage;
+    private String errMessage;
 
     public ParkingBoy(Set<ParkingLot> parkingLots, ParkingLot parkingLot) {
         this.parkingLots = parkingLots;
@@ -71,7 +71,7 @@ public class ParkingBoy {
         return car2;
     }
 
-    public boolean isAllParkingLotFull() {
+    private boolean isAllParkingLotFull() {
         for (ParkingLot parkingLot : parkingLots) {
             if (!parkingLot.isFull()) {
                 return false;

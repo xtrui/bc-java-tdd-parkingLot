@@ -5,9 +5,9 @@ import java.util.List;
 import java.util.Objects;
 
 public class ParkingLot {
-    int id;
+    private int id;
     private List<Car> cars;
-    int capacity;
+    private int capacity;
 
     public ParkingLot(int id, int capacity) {
         this.id = id;
