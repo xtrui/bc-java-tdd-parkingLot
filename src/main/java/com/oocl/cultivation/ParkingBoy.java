@@ -43,7 +43,7 @@ public class ParkingBoy {
         if (isAllParkingLotFull()) {
             errMessage = "Not enough position.";
             return null;
-        } else if (parkingLot.getCars().contains(car)) {
+        } else if (isAnyParkingLotContains(car)) {
             errMessage = "这辆车已经在停车场了。";
             return null;
         }
@@ -53,14 +53,18 @@ public class ParkingBoy {
         return new Ticket(car.getId());
     }
 
+    private boolean isAnyParkingLotContains(Car car) {
+        return parkingLots.stream().anyMatch(parkingLot -> parkingLot.getCars().contains(car));
+    }
+
     public Car fetch(Ticket ticket) {
         if (ticket == null) {
             errMessage = "Please provide your parking ticket.";
             return null;
         }
         Car car2 = ticket.isValid() ? parkingLot.getCars().stream().filter(car -> car.getId() == ticket.getId()).findAny().orElse(null) : null;
-        if (car2!=null){
-            parkingLots.stream().filter(parkingLot ->parkingLot.getCars().contains(car2)).findAny().ifPresent(parkingLot ->parkingLot.getCars().remove(car2) );
+        if (car2 != null) {
+            parkingLots.stream().filter(parkingLot -> parkingLot.getCars().contains(car2)).findAny().ifPresent(parkingLot -> parkingLot.getCars().remove(car2));
         }
         ticket.setValid();
         errMessage = "Unrecognized parking ticket.";
