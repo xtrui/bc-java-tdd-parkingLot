@@ -18,10 +18,6 @@ public class ParkingBoy {
         return errMessage;
     }
 
-    public void setErrMessage(String errMessage) {
-        this.errMessage = errMessage;
-    }
-
     public ParkingLot getParkingLot() {
         for (ParkingLot parkingLot : parkingLots) {
             if (!parkingLot.isFull()) {
@@ -64,7 +60,7 @@ public class ParkingBoy {
         }
         Car car2 = ticket.isValid() ? parkingLot.getCars().stream().filter(car -> car.getId() == ticket.getId()).findAny().orElse(null) : null;
         if (car2!=null){
-            parkingLots.stream().filter(parkingLot ->parkingLot.getCars().contains(car2)).findFirst().get().getCars().remove(car2);
+            parkingLots.stream().filter(parkingLot ->parkingLot.getCars().contains(car2)).findAny().ifPresent(parkingLot ->parkingLot.getCars().remove(car2) );
         }
         ticket.setValid();
         errMessage = "Unrecognized parking ticket.";
