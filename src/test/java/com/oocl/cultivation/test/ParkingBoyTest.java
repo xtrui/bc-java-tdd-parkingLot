@@ -74,15 +74,14 @@ class ParkingBoyTest {
     @Test
     void should_return_null_when_park_parkingLot_is_full() {
         //given
-        ParkingBoy parkingBoy = new ParkingBoy(new LinkedHashSet<>(), new ParkingLot(1, 10));
+        ParkingBoy parkingBoy = new ParkingBoy(new LinkedHashSet<>(), new ParkingLot(1, 1));
         List<Car> cars = new ArrayList<>();
-        Car car = new Car(11, "cars");
-        for (int i = 1; i <= 10; i++) {
-            cars.add(new Car(i, "car" + i));
-        }
-        parkingBoy.getParkingLot().setCars(cars);
+        Car car = new Car(1, "car1");
+        Car car2 = new Car(2, "car2");
+
         //when
-        Ticket ticket = parkingBoy.park(car);
+        parkingBoy.park(car);
+        Ticket ticket = parkingBoy.park(car2);
         //then
         assertNull(ticket);
     }
