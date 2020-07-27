@@ -63,6 +63,9 @@ public class ParkingBoy {
             return null;
         }
         Car car2 = ticket.isStatus() ? parkingLot.getCars().stream().filter(car -> car.getId() == ticket.getId()).findAny().orElse(null) : null;
+        if (car2!=null){
+            parkingLots.stream().filter(parkingLot ->parkingLot.getCars().contains(car2)).findFirst().get().getCars().remove(car2);
+        }
         ticket.setStatus(false);
         errMessage = "Unrecognized parking ticket.";
         return car2;
