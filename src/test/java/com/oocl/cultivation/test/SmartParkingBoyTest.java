@@ -9,7 +9,7 @@ import java.util.LinkedHashSet;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class ParkingBoyStory4 {
+public class SmartParkingBoyTest {
     @Test
     void should_return_parkingLot_which_has_most_empty_positions_when_getParkingLot() {
         // given
