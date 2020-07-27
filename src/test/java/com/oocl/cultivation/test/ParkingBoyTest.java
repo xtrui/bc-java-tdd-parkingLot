@@ -89,8 +89,10 @@ class ParkingBoyTest {
     @Test
     void should_return_appropriate_errMessage_when_park_err_and_getErrMessage() {
         // given
-        ParkingBoy parkingBoy = new ParkingBoy(new LinkedHashSet<>(), new ParkingLot(1, 10));
+        ParkingBoy parkingBoy = new ParkingBoy(new LinkedHashSet<>(), new ParkingLot(1, 2));
         Car car = new Car(1, "car1");
+        Car car2 = new Car(2, "car2");
+        Car car3 = new Car(3, "car3");
         // when
 
         parkingBoy.park(car);
@@ -98,12 +100,8 @@ class ParkingBoyTest {
         String errMessage = parkingBoy.getErrMessage();
         parkingBoy.park(null);
         String errMessage2 = parkingBoy.getErrMessage();
-        List<Car> cars = new ArrayList<>();
-        for (int i = 1; i <= 10; i++) {
-            cars.add(new Car(i, "car" + i));
-        }
-        parkingBoy.getParkingLot().setCars(cars);
-        parkingBoy.park(car);
+        parkingBoy.park(car2);
+        parkingBoy.park(car3);
         String errMessage3 = parkingBoy.getErrMessage();
         // then
         assertNull(ticket);

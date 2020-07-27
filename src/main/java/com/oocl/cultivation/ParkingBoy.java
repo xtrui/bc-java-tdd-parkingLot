@@ -53,6 +53,7 @@ public class ParkingBoy {
         }
 
         parkingLot.getCars().add(car);
+        errMessage = null;
         return new Ticket(car.getId());
     }
 
